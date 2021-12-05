@@ -31,9 +31,9 @@ locals {
     }
   }
 **/
-  jobs = values({ for k, v in var.jobs : k => { for x in local.job_actions :
+  jobs = merge(values({ for k, v in var.jobs : k => { for x in local.job_actions :
     "${k}_${x}" => merge({ for o, p in v : o => p if !contains(local.job_actions, o) }, { schedule : v[x], action : x }) if contains(keys(v), x)
-  } })[0]
+  } })...)
 }
 
 # Enable app engine
