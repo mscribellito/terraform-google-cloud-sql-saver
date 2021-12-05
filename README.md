@@ -34,7 +34,7 @@ module "cloud-sql-saver" {
   source     = "mscribellito/cloud-sql-saver/google"
   project_id = "your-project-id"
   region     = "us-east1"
-  jobs =  {
+  schedule =  {
     "8am-5pm" = {
       start     = "0 8 * * 1-5"
       stop      = "0 17 * * 1-5"
