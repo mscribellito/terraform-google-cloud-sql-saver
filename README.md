@@ -58,7 +58,7 @@ module "cloud-sql-saver" {
 | ---- | ----------- | ---- | ------- | -------- |
 | project_id | The project ID to manage the resources. | `string` | n/a | yes
 | region | The region of the resources. | `string` | `"us-east1"` | no
-| jobs | Map of start/stop jobs. | `map(object({ start = string, stop = string, instances = list(string), time_zone = string }))` | `{}` | no
+| schedule | Start/stop schedule. | `map(object({ start = string, stop = string, instances = list(string), time_zone = string }))` | `{}` | no
 | time_zone | Default time zone name from the tz database for scheduled jobs. | `string` | `"America/New_York"` | no
 | create_app_engine | Whether App Engine application should be created. | `bool` | `true` | no
 | gcp_services | List of GCP Services to enable. | `list(string)` | See `variables.tf` | no

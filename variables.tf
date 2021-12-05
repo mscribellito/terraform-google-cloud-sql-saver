@@ -9,9 +9,9 @@ variable "region" {
   default     = "us-east1"
 }
 
-variable "jobs" {
+variable "schedule" {
   type        = map(object({ start = string, stop = string, instances = list(string), time_zone = string }))
-  description = "Map of job config."
+  description = "Start/stop schedule."
   default     = {}
 }
 
