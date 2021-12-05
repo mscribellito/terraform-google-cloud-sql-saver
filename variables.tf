@@ -15,30 +15,24 @@ variable "time_zone" {
   default     = "America/New_York"
 }
 
-variable "start_jobs" {
-  type = list(object({
-    name      = string
-    schedule  = string
-    instances = list(string)
-    time_zone = string
-  }))
-  description = "List of start jobs."
-  default     = []
-}
-
-variable "stop_jobs" {
-  type = list(object({
-    name      = string
-    schedule  = string
-    instances = list(string)
-    time_zone = string
-  }))
-  description = "List of stop jobs."
-  default     = []
+variable "jobs" {
+  description = "Map of job config."
+  default     = {}
 }
 
 variable "create_app_engine" {
   type        = bool
   description = "Whether App Engine application should be created."
   default     = true
+}
+
+variable "gcp_services" {
+  type        = list(string)
+  description = "List of GCP Services to enable"
+  default = [
+    "cloudbuild.googleapis.com",
+    "cloudfunctions.googleapis.com",
+    "cloudscheduler.googleapis.com", # Required for using Cloud Scheduler
+    "sqladmin.googleapis.com"        # Required for starting/stopping Cloud SQL instances
+  ]
 }
