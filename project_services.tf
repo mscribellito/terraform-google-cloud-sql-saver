@@ -1,18 +1,8 @@
 # Enable APIs
-
-locals {
-  gcp_services = [
-    "cloudbuild.googleapis.com",
-    "cloudfunctions.googleapis.com",
-    "cloudscheduler.googleapis.com", # Required for using Cloud Scheduler
-    "sqladmin.googleapis.com"        # Required for starting/stopping Cloud SQL instances
-  ]
-}
-
 resource "google_project_service" "enable_services" {
   project                    = var.project_id
-  count                      = length(local.gcp_services)
-  service                    = local.gcp_services[count.index]
+  for_each                   = toset(var.gcp_services)
+  service                    = each.value
   disable_dependent_services = true
   disable_on_destroy         = false
 }
