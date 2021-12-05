@@ -38,7 +38,13 @@ module "cloud-sql-saver" {
     "8am-5pm" = {
       start     = "0 8 * * 1-5"
       stop      = "0 17 * * 1-5"
-      instances = ["acme-db"]
+      instances = ["acme-db-1", "acme-db-2"]
+      time_zone = null
+    }
+    "10am-3pm" = {
+      start     = "0 10 * * 6-7"
+      stop      = "0 15 * * 6-7"
+      instances = ["acme-db-3", "acme-db-4"]
       time_zone = null
     }
   }
@@ -52,10 +58,10 @@ module "cloud-sql-saver" {
 | ---- | ----------- | ---- | ------- | -------- |
 | project_id | The project ID to manage the resources. | `string` | n/a | yes
 | region | The region of the resources. | `string` | `"us-east1"` | no
-| jobs | Mao of start/stop jobs. | Map | `{}` | no
+| jobs | Map of start/stop jobs. | `map(object({ start = string, stop = string, instances = list(string), time_zone = string }))` | `{}` | no
 | time_zone | Default time zone name from the tz database for scheduled jobs. | `string` | `"America/New_York"` | no
 | create_app_engine | Whether App Engine application should be created. | `bool` | `true` | no
-| gcp_services | List of GCP Services to enable. | `list(string)` | `Check variables.tf` | no
+| gcp_services | List of GCP Services to enable. | `list(string)` | See `variables.tf` | no
 
 
 ## Outputs

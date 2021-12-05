@@ -9,15 +9,16 @@ variable "region" {
   default     = "us-east1"
 }
 
+variable "jobs" {
+  type        = map(object({ start = string, stop = string, instances = list(string), time_zone = string }))
+  description = "Map of job config."
+  default     = {}
+}
+
 variable "time_zone" {
   type        = string
   description = "Default time zone name from the tz database for scheduled jobs."
   default     = "America/New_York"
-}
-
-variable "jobs" {
-  description = "Map of job config."
-  default     = {}
 }
 
 variable "create_app_engine" {
@@ -28,7 +29,7 @@ variable "create_app_engine" {
 
 variable "gcp_services" {
   type        = list(string)
-  description = "List of GCP Services to enable"
+  description = "List of GCP Services to enable."
   default = [
     "cloudbuild.googleapis.com",
     "cloudfunctions.googleapis.com",
