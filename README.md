@@ -69,6 +69,12 @@ module "cloud-sql-saver" {
 N/A
 
 ## Changelog
+  
+* **1.1.0**
+  * Add least privilege service account for Cloud Function.
+
+* **1.0.0**
+  * Release stable version.
 
 ## Contributing
 
