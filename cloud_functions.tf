@@ -23,6 +23,8 @@ resource "google_cloudfunctions_function" "start_stop" {
     resource   = google_pubsub_topic.instance_mgmt.id
   }
 
+  service_account_email = google_service_account.service_account.email
+
   depends_on = [
     time_sleep.wait_30_seconds
   ]
