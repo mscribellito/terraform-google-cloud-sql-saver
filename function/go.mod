@@ -1,4 +1,4 @@
-module github.com/mscribellito/cloud-sql-saver
+module github.com/mscribellito/terraform-google-cloud-sql-saver/function
 
 go 1.16
 
