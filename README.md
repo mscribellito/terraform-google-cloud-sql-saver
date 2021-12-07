@@ -35,17 +35,17 @@ module "cloud-sql-saver" {
   project_id = "your-project-id"
   region     = "us-east1"
   schedule =  {
-    "8am-5pm" = {
+    "8am-5pm-est" = {
       start     = "0 8 * * 1-5"
       stop      = "0 17 * * 1-5"
       instances = ["acme-db-1", "acme-db-2"]
       time_zone = null # set to null to use time zone from inputs
     }
-    "10am-3pm" = {
+    "8am-5pm-mst" = {
       start     = "0 10 * * 6-7"
       stop      = "0 15 * * 6-7"
       instances = ["acme-db-3", "acme-db-4"]
-      time_zone = null
+      time_zone = "America/Denver"
     }
   }
   create_app_engine = false # set to false if an App Engine application is already created in your project
