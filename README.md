@@ -42,8 +42,8 @@ module "cloud-sql-saver" {
       time_zone = null # set to null to use time zone from inputs
     }
     "8am-5pm-mst" = {
-      start     = "0 10 * * 6-7"
-      stop      = "0 15 * * 6-7"
+      start     = "0 8 * * 1-5"
+      stop      = "0 17 * * 1-5"
       instances = ["acme-db-3", "acme-db-4"]
       time_zone = "America/Denver"
     }
