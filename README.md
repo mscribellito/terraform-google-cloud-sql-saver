@@ -39,7 +39,7 @@ module "cloud-sql-saver" {
       start     = "0 8 * * 1-5"
       stop      = "0 17 * * 1-5"
       instances = ["acme-db-1", "acme-db-2"]
-      time_zone = null
+      time_zone = null # set to null to use time zone from inputs
     }
     "10am-3pm" = {
       start     = "0 10 * * 6-7"
