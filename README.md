@@ -69,7 +69,10 @@ module "cloud-sql-saver" {
 N/A
 
 ## Changelog
-  
+    
+* **1.1.1**
+  * Fix issue where default time zone is not configured if a time zone is not specified.
+
 * **1.1.0**
   * Add least privilege service account for Cloud Function.
 
