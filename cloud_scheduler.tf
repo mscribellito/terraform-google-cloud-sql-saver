@@ -51,7 +51,7 @@ resource "google_cloud_scheduler_job" "job" {
   name        = "${local.base_name}-${each.key}"
   description = "Stop Cloud SQL instances"
   schedule    = each.value.schedule
-  time_zone   = lookup(each.value, "time_zone", var.time_zone)
+  time_zone   = coalesce(lookup(each.value, "time_zone"), var.time_zone)
 
   pubsub_target {
     topic_name = google_pubsub_topic.instance_mgmt.id
