@@ -1,7 +1,12 @@
+resource "random_pet" "random_pet" {
+  length = 16
+}
+
 # Create bucket for hosting the source
 resource "google_storage_bucket" "source" {
-  project  = var.project_id
-  name     = "${local.base_name}-source"
+  project = var.project_id
+  # Attempt to create unique bucket name
+  name     = substr("${local.base_name}-source-${sha256(join("", [random_pet.random_pet.id, var.project_id]))}", 0, 63)
   location = var.region
 }
 
