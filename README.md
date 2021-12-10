@@ -70,6 +70,9 @@ N/A
 
 ## Changelog
     
+* **1.1.2**
+  * Fix issue where bucket name is not unique.
+    
 * **1.1.1**
   * Fix issue where default time zone is not configured if a time zone is not specified.
 
